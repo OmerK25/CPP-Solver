@@ -1,4 +1,5 @@
 #include "solver.hpp"
+#include <cmath>
 using namespace std;
 using namespace solver;
 
@@ -78,13 +79,43 @@ const RealVariable RealVariable::operator^(const double &other) const
 
     return RealVariable(1, 0, 0);
 }
+//Operator(==)
 
-complex<double> solve(ComplexVariable &bi)
+const RealVariable RealVariable::operator==(const RealVariable &other) const
 {
-    complex<double> res;
-    return res;
+    return RealVariable(this->a - other.a, this->b - other.b, this->c - other.c);
 }
+
+const RealVariable RealVariable::operator==(const double &other) const
+{
+    return RealVariable(this->a, this->b, this->c - other);
+}
+
+const RealVariable operator==(const double &d, const RealVariable &r)
+{
+    return RealVariable(r.a(), r.b(), r.c() - d);
+}
+
+
+// complex<double> solve(ComplexVariable &bi)
+// {
+    // complex<double> res;
+    // return res;
+// }
 double solve(RealVariable &x)
 {
-    return 0;
-}
+    double Discriminant= ( x.b()*x.b()) -(4*(x.a())*(x.c));
+    
+    if(Discriminant < 0 ) 
+    {
+         throw runtime_error("The answer is not a Real number ");
+    }
+    if( 2*x.a() == 0 )
+    {
+        throw runtime_error("can't divide by 0 , CHECK your math dude ; ");
+    }
+    double result = ((-x.b)+ sqrt(Discriminant))/(2*x.a());
+
+
+    return result ;
+    }

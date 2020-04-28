@@ -28,24 +28,30 @@ public:
     {
         return c;
     }
-
+//Operator(+)
     const RealVariable operator+(const RealVariable &other) const;
     const RealVariable operator+(const double &other) const;
     friend const RealVariable operator+(const double &d, const RealVariable &r);
-
+//Operator(-)
     const RealVariable operator-(const RealVariable &other) const;
     const RealVariable operator-(const double &other) const;
     friend const RealVariable operator-(const double &d, const RealVariable &r);
 
+//Operator(*)
     const RealVariable operator*(const RealVariable &other) const;
     const RealVariable operator*(const double &other) const;
     friend const RealVariable operator*(const double &d, const RealVariable &r);
 
-
+//Operator(/)
     const RealVariable operator/(const double &other) const;
   
-
+//Operator(^)
     const RealVariable operator^(const double &other) const;
+
+//Operator(==)
+    const RealVariable operator==(const RealVariable &other) const;
+const RealVariable operator==(const double &other) const;
+friend const RealVariable operator==(const double &d, const RealVariable &r);
 };
 
 class ComplexVariable
