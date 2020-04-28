@@ -1,4 +1,5 @@
 #include <complex>
+#include <cmath>
 
 using namespace std;
 
@@ -12,69 +13,100 @@ class RealVariable
     double c;
 
 public:
+    RealVariable(const double &_a = 0.0, const double &_b = 1.0, const double &_c = 0.0) : a(_a), b(_b), c(_c){};
 
-    RealVariable(const double &_a=0.0, const double &_b=1.0, const double &_c=0.0) : a(_a), b(_b), c(_c){};
-
-    double a() const
+    // getters
+    double _a() const
     {
         return a;
     }
 
-    double b() const
+    double _b() const
     {
         return b;
     }
-    double c() const
+    double _c() const
     {
         return c;
     }
-//Operator(+)
+
+    //Operator(+)
     const RealVariable operator+(const RealVariable &other) const;
     const RealVariable operator+(const double &other) const;
     friend const RealVariable operator+(const double &d, const RealVariable &r);
-//Operator(-)
+    //Operator(-)
     const RealVariable operator-(const RealVariable &other) const;
     const RealVariable operator-(const double &other) const;
     friend const RealVariable operator-(const double &d, const RealVariable &r);
 
-//Operator(*)
+    //Operator(*)
     const RealVariable operator*(const RealVariable &other) const;
     const RealVariable operator*(const double &other) const;
     friend const RealVariable operator*(const double &d, const RealVariable &r);
 
-//Operator(/)
+    //Operator(/)
     const RealVariable operator/(const double &other) const;
-  
-//Operator(^)
+
+    //Operator(^)
     const RealVariable operator^(const double &other) const;
 
-//Operator(==)
+    //Operator(==)
     const RealVariable operator==(const RealVariable &other) const;
-const RealVariable operator==(const double &other) const;
-friend const RealVariable operator==(const double &d, const RealVariable &r);
+    const RealVariable operator==(const double &other) const;
+    friend const RealVariable operator==(const double &d, const RealVariable &r);
 };
 
 class ComplexVariable
 {
-    // complex<double> compVar;
-    // ComplexVariable(double re, double im)
-    // {
-    //     compVar.real = re;
-    //     compVar.imag = im;
-    // }
 
-    // const ComplexVariable operator+(const ComplexVariable &other) const
-    // {
-    //     return ComplexVariable(other.compVar.real + this->compVar.real, other.compVar.imag + this->compVar.imag);
-    // }
+complex<double> a;
+complex<double> b;
+complex<double> c;
+public:
+    ComplexVariable(const double &_a = 0.0, const double &_b = 1.0, const double &_c = 0.0) : a(_a), b(_b), c(_c){};
 
-    // const ComplexVariable operator+(const double &other) const
-    // {
-    //     return ComplexVariable(other.compVar.real, other.compVar.imag);
-    // }
+    // getters
+    complex<double> _a() const
+    {
+        return a;
+    }
+
+    complex<double> _b() const
+    {
+        return b;
+    }
+    complex<double> _c() const
+    {
+        return c;
+    }
+
+    //Operator(+)
+    const ComplexVariable operator+(const ComplexVariable &other) const;
+    const ComplexVariable operator+(const complex<double> &other) const;
+    friend const ComplexVariable operator+(const complex<double> &d, const ComplexVariable &r);
+    //Operator(-)
+    const ComplexVariable operator-(const ComplexVariable &other) const;
+    const ComplexVariable operator-(const complex<double> &other) const;
+    friend const ComplexVariable operator-(const complex<double> &d, const ComplexVariable &r);
+
+    //Operator(*)
+    const ComplexVariable operator*(const ComplexVariable &other) const;
+    const ComplexVariable operator*(const complex<double> &other) const;
+    friend const ComplexVariable operator*(const complex<double> &d, const ComplexVariable &r);
+
+    //Operator(/)
+    const ComplexVariable operator/(const complex<double> &other) const;
+
+    //Operator(^)
+    const ComplexVariable operator^(const complex<double> &other) const;
+
+    //Operator(==)
+    const ComplexVariable operator==(const ComplexVariable &other) const;
+    const ComplexVariable operator==(const complex<double> &other) const;
+    friend const ComplexVariable operator==(const complex<double> &d, const ComplexVariable &r);
 };
 
-double solve(RealVariable &x);
-complex<double> solve(ComplexVariable &bi);
+ double solve( const RealVariable &x);
+ complex<double> solve(const ComplexVariable &bi);
 
 } // namespace solver
