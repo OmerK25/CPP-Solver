@@ -1,45 +1,65 @@
 #include "solver.hpp"
 #include <iostream>
+#include <stdlib.h>     /* srand, rand */
 #include "doctest.h"
 
 using namespace std;
 using solver::solve, solver::RealVariable, solver::ComplexVariable;
+
+
+
 
 TEST_CASE("REALVAR FUNCTIONS ")
 {
     RealVariable x;
     double sol = solve(x ^ 2 == 1);
     CHECK((sol == 1) || (sol == -1));
-    double sol = solve(2 * x ^ 2 - 10 == 3);
+    CHECK(solve(x-2 == 8)==10);
+    CHECK( solve(2 * x ^ 2 - 10 == 3)  == ((-sqrt(13 / 2)) ||  sqrt(13 / 2)));
+    CHECK(solve((x^2)+x-100==0) == (((-1/2 - sqrt(401)/2)) || (-1/2 + sqrt(401)/2)));
+    CHECK(  solve(x+17 == 10) == 7);
+    CHECK(solve((x ^ 2) + 5 * x + 6 == 0) == ((-3) || -2));
+    CHECK( (solve( (15*(x^2))-27*x)==6) == ((-1/5) || 2) );
+    CHECK(solve(100*x-290 == 10)==3);
+    CHECK( (solve(x+12==20)) == 8 );
+    CHECK(solve(x-4 == 8)==12);
+    CHECK( solve(x/3==9) == 27) ;
+    CHECK(solve(x-4 == 8)==12);
+    CHECK( (solve(1 + 1*x == -2 -2*x)) == 1);
+    CHECK(solve(x-2 == 8)==10);
+    CHECK(solve(2*x-3*x == 10)==-10);
+    CHECK( (solve(x*(x +5) == 3 + x*(x+6))) == -3);
+    CHECK(solve(6*x-2+3*x+x+42 == 10)==-3);  
+    CHECK(solve(2*x-4 == 10)==7);
+    CHECK( (solve(0 == 3 + x*(x+6))) == ((-3 - sqrt(6) || (-3 + sqrt(6)) ) ));
+    CHECK( ( solve((x^2)/4 + x/4 == (x^2) + x ) )== ( ( 0) || (-1) ));
+    CHECK(solve(2*x-4 == 10)==7);
+    CHECK(solve(x-4 == 8)==12);
+    CHECK(solve(x-2 == 8)==10);
+    CHECK(solve(2*x-2 == 10)==6);
+    CHECK(solve(15*x-5*x == 10)== 1);
+    CHECK(solve(9*x == 18)==2);
+    CHECK(solve(7*x+11-x== 10+7)==1);
+    CHECK(solve(49*x == 343)==7);
+    CHECK(solve(x-15 == 8)==-23);
+    CHECK(solve(-3*(-1*x-7)==8*x)==4.5);
+    CHECK(solve(3*x/0.5*x)==6);   
+    CHECK(solve(2*x-9 == 5)==7);
+    CHECK(solve(x-6 == 4)==10);
+}
+TEST_CASE("REALVAR FUNCTIONS ")
+{
+      RealVariable x;
+    for (int i = 0; i < 80; i++)
+    {
+    double a= rand() %1000 ,b = rand() %1000 , c=rand()%1000;
+    int p = rand()%100 + 3;
+    CHECK_THROWS( (solve((a*(x^2) + b*x +c == 0 ) == p)) );
 
-    CHECK((sol == -sqrt(13 / 2)) || (sol == sqrt(13 / 2)));
+    }
+    
 
-    sol = solve((x^2)+x-100==0);
-    CHECK((sol == (-1/2 - sqrt(401)/2)) || (sol == (-1/2 + sqrt(401)/2)));
 
-    sol = solve(x+17 == 10);
-    CHECK((sol == 7));
-
-    sol = solve((x ^ 2) + 5 * x + 6 == 0);
-    CHECK((sol == -3) || (sol == -2));
-
-    sol = solve((x ^ 2) + 5 * x + 6 == 0);
-    CHECK((sol == -3) || (sol == -2));
-
-    sol = solve((x ^ 2) + 5 * x + 6 == 0);
-    CHECK((sol == -3) || (sol == -2));
-
-    sol = solve((x ^ 2) + 5 * x + 6 == 0);
-    CHECK((sol == -3) || (sol == -2));
-
-    sol = solve((x ^ 2) + 5 * x + 6 == 0);
-    CHECK((sol == -3) || (sol == -2));
-
-    sol = solve((x ^ 2) + 5 * x + 6 == 0);
-    CHECK((sol == -3) || (sol == -2));
-
-    sol = solve((x ^ 2) + 5 * x + 6 == 0);
-    CHECK((sol == -3) || (sol == -2));
 }
 TEST_CASE("COMPLEXVAR FUNCTIONS ")
 {
