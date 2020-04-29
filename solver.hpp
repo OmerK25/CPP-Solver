@@ -63,7 +63,7 @@ complex<double> a;
 complex<double> b;
 complex<double> c;
 public:
-    ComplexVariable(const double &_a = 1.0, const double &_b = 1.0, const double &_c = 0.0) : a(_a), b(_b), c(_c){};
+    ComplexVariable(const complex<double> &_a = 0.0, const complex<double> &_b = 1.0, const complex<double> &_c = 0.0) : a(_a), b(_b), c(_c){};
 
     // getters
     complex<double> _a() const
