@@ -66,6 +66,11 @@ const RealVariable RealVariable::operator/(const double &other) const
 //operator(^)
 const RealVariable RealVariable::operator^(const double &other) const
 {
+    if(other < 0)
+    {
+             throw runtime_error("Al mi ata ba");
+
+    }
     if (other > 2)
         throw runtime_error("Al mi ata ba");
 
