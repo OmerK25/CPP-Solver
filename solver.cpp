@@ -106,7 +106,7 @@ complex<double> solve(const ComplexVariable &bi)
         complex<double> result = ((-bi._b()) + sqrt(Desc)) / (2.0 * bi._a());
         return result;
     }
-    else if (bi._b() != (0.0,0.0))
+    else if (bi._b() != std::complex<double>(0.0,0.0) )
     {
         return -(bi._c()) / bi._b();
     }
